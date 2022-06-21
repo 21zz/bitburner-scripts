@@ -1,7 +1,6 @@
 /**
 * @param {NS} ns
 **/
-// connect '${target}'; backdoor
 var payloadServers = []
 var backdoorServers = []
 var failBackdoors = []
@@ -71,7 +70,7 @@ export async function main(ns) {
         // check target hack requirement vs current hack level
         var hackLevelDiff = ns.getHackingLevel() - ns.getServerRequiredHackingLevel(target);
         if (hackLevelDiff < 0) {
-            ns.tprint(`[INFO]\tNeed '${Math.abs(hackLevelDiff)} more hack levels for '${target}.'`);
+            ns.tprint(`[INFO]\tNeed '${Math.abs(hackLevelDiff)}' more hack levels for '${target}.'`);
             continue;
         }
         // check for root on the target
@@ -165,6 +164,6 @@ async function executePayload(ns, scriptHost, target, payload) {
     }
     ns.tprint(`[PAYLOAD]\tExecuting ${payload}...`);
     ns.exec(payload, target, threads, target);
-    ns.tprint(`[PAYLOAD]\tSUCCESS: Payload executed on '${target} with ${threads}' threads`);
+    ns.tprint(`[PAYLOAD]\tSUCCESS: Payload executed on '${target}' with '${threads}' threads`);
     payloadServers.push(target);
 }
